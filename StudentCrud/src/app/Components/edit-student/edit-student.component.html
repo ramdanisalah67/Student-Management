@@ -1,0 +1,16 @@
+<form [formGroup]="myformbuilder" class="text-center mt-4">
+
+    name<input type="text" class="my-3" formControlName="name" ><br>
+    <p *ngIf="name.touched && name.hasError('minlength')" class="alert alert-danger">must be greather than 3</p>
+    <p *ngIf="name.touched && name.hasError('required')" class="alert alert-danger">must be complete</p>
+    <p *ngIf="name.touched && name.hasError('maxlength')" class="alert alert-danger">must be less than  10</p>
+    <p *ngIf="name.touched && name.hasError('pattern')" class="alert alert-danger">must be compatible with pattern [A-Z][a-z] '1,12' </p>
+    
+    note<input type="text" class="my-3" formControlName="note" ><br>
+    <p *ngIf="note.touched && note.hasError('min') || note.touched && note.hasError('max')  " class="alert alert-danger">must be between 0 and 20"</p>
+    
+    <input type="button" value="ajouter" class="btn btn-primary p-2 mx-4" (click)="editStudent()">
+
+    </form>
+    <div class="alert alert-success w-25 mx-auto my-4" *ngIf="messageSuccess!=''">{{messageSuccess}}</div>
+    <input type="button" value="Home" class="btn btn-secondary p-2 my-4 mx-auto {{vis}}" (click)="goToHome()">
